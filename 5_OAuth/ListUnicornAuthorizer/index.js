@@ -231,7 +231,7 @@ AuthPolicy.prototype = (function() {
      * @return {void}
      */
     var addMethod = function(effect, verb, resource, conditions) {
-        if (verb != "*" && !AuthPolicy.HttpVerb.hasOwnProperty(verb)) {
+        if (verb != "*" && !Object.prototype.hasOwnProperty.call(AuthPolicy.HttpVerb, verb)) {
             throw new Error("Invalid HTTP verb " + verb + ". Allowed verbs in AuthPolicy.HttpVerb");
         }
 
