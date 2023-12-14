@@ -177,7 +177,7 @@ jQuery.fn = jQuery.prototype = {
 
 	eq: function( i ) {
 		var len = this.length,
-			j = +i + ( i < 0 ? len : 0 );
+			j = Number(i) + ( i < 0 ? len : 0 );
 		return this.pushStack( j >= 0 && j < len ? [ this[ j ] ] : [] );
 	},
 
@@ -334,7 +334,7 @@ jQuery.extend( {
 
 	type: function( obj ) {
 		if ( obj == null ) {
-			return obj + "";
+			return String(obj);
 		}
 
 		// Support: Android <=2.3 only (functionish RegExp)
@@ -384,7 +384,7 @@ jQuery.extend( {
 	trim: function( text ) {
 		return text == null ?
 			"" :
-			( text + "" ).replace( rtrim, "" );
+			( String(text) ).replace( rtrim, "" );
 	},
 
 	// results is for internal usage only
@@ -412,7 +412,7 @@ jQuery.extend( {
 	// Support: Android <=4.0 only, PhantomJS 1 only
 	// push.apply(_, arraylike) throws on ancient WebKit
 	merge: function( first, second ) {
-		var len = +second.length,
+		var len = Number(second.length),
 			j = 0,
 			i = first.length;
 
@@ -531,7 +531,7 @@ function isArrayLike( obj ) {
 	// `in` check used to prevent JIT error (gh-2145)
 	// hasOwn isn't used here due to false negatives
 	// regarding Nodelist length in IE
-	var length = !!obj && "length" in obj && obj.length,
+	var length = Boolean(obj) && "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -577,7 +577,7 @@ var i,
 	contains,
 
 	// Instance-specific data
-	expando = "sizzle" + 1 * new Date(),
+	expando = "sizzle" + Number(new Date()),
 	preferredDoc = window.document,
 	dirruns = 0,
 	done = 0,
@@ -927,7 +927,7 @@ function assert( fn ) {
 	var el = document.createElement("fieldset");
 
 	try {
-		return !!fn( el );
+		return Boolean(fn( el ));
 	} catch (e) {
 		return false;
 	} finally {
@@ -1038,7 +1038,7 @@ function createDisabledPseudo( disabled ) {
  */
 function createPositionalPseudo( fn ) {
 	return markFunction(function( argument ) {
-		argument = +argument;
+		argument = Number(argument);
 		return markFunction(function( seed, matches ) {
 			var j,
 				matchIndexes = fn( [], seed.length, argument ),
@@ -1341,7 +1341,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		function( a, b ) {
 			var adown = a.nodeType === 9 ? a.documentElement : a,
 				bup = b && b.parentNode;
-			return a === bup || !!( bup && bup.nodeType === 1 && (
+			return a === bup || Boolean(bup && bup.nodeType === 1 && (
 				adown.contains ?
 					adown.contains( bup ) :
 					a.compareDocumentPosition && a.compareDocumentPosition( bup ) & 16
@@ -1525,7 +1525,7 @@ Sizzle.attr = function( elem, name ) {
 };
 
 Sizzle.escape = function( sel ) {
-	return (sel + "").replace( rcssescape, fcssescape );
+	return (String(sel)).replace( rcssescape, fcssescape );
 };
 
 Sizzle.error = function( msg ) {
@@ -1655,8 +1655,8 @@ Expr = Sizzle.selectors = {
 
 				// numeric x and y parameters for Expr.filter.CHILD
 				// remember that false/true cast respectively to 0/1
-				match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
-				match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
+				match[4] = Number(match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ));
+				match[5] = Number(( match[7] + match[8] ) || match[3] === "odd");
 
 			// other types prohibit arguments
 			} else if ( match[3] ) {
@@ -1727,7 +1727,7 @@ Expr = Sizzle.selectors = {
 					return true;
 				}
 
-				result += "";
+				result = String(result);
 
 				return operator === "=" ? result === check :
 					operator === "!=" ? result !== check :
@@ -1749,7 +1749,7 @@ Expr = Sizzle.selectors = {
 
 				// Shortcut for :nth-*(n)
 				function( elem ) {
-					return !!elem.parentNode;
+					return Boolean(elem.parentNode);
 				} :
 
 				function( elem, context, xml ) {
@@ -1991,7 +1991,7 @@ Expr = Sizzle.selectors = {
 		},
 
 		"focus": function( elem ) {
-			return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
+			return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && Boolean(elem.type || elem.href || ~elem.tabIndex);
 		},
 
 		// Boolean properties
@@ -2002,7 +2002,7 @@ Expr = Sizzle.selectors = {
 			// In CSS3, :checked should return both checked and selected elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			var nodeName = elem.nodeName.toLowerCase();
-			return (nodeName === "input" && !!elem.checked) || (nodeName === "option" && !!elem.selected);
+			return (nodeName === "input" && Boolean(elem.checked)) || (nodeName === "option" && Boolean(elem.selected));
 		},
 
 		"selected": function( elem ) {
@@ -2681,7 +2681,7 @@ support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 
 // Support: Chrome 14-35+
 // Always assume duplicates if they aren't passed to the comparison function
-support.detectDuplicates = !!hasDuplicate;
+support.detectDuplicates = Boolean(hasDuplicate);
 
 // Initialize against the default document
 setDocument();
@@ -2798,7 +2798,7 @@ var risSimple = /^.[^:#\[\.,]*$/;
 function winnow( elements, qualifier, not ) {
 	if ( jQuery.isFunction( qualifier ) ) {
 		return jQuery.grep( elements, function( elem, i ) {
-			return !!qualifier.call( elem, i, elem ) !== not;
+			return Boolean(qualifier.call( elem, i, elem )) !== not;
 		} );
 
 	}
@@ -2868,7 +2868,7 @@ jQuery.fn.extend( {
 		return this.pushStack( winnow( this, selector || [], true ) );
 	},
 	is: function( selector ) {
-		return !!winnow(
+		return Boolean(winnow(
 			this,
 
 			// If this is a positional/relative selector, check membership in the returned set
@@ -2877,7 +2877,7 @@ jQuery.fn.extend( {
 				jQuery( selector ) :
 				selector || [],
 			false
-		).length;
+		).length);
 	}
 } );
 
@@ -3360,7 +3360,7 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 			locked: function() {
-				return !!locked;
+				return Boolean(locked);
 			},
 
 			// Call all callbacks with the given context and arguments
@@ -3384,7 +3384,7 @@ jQuery.Callbacks = function( options ) {
 
 			// To know if the callbacks have already been called at least once
 			fired: function() {
-				return !!fired;
+				return Boolean(fired);
 			}
 		};
 
@@ -3950,7 +3950,7 @@ var acceptData = function( owner ) {
 	//    - Node.DOCUMENT_NODE
 	//  - Object
 	//    - Any
-	return owner.nodeType === 1 || owner.nodeType === 9 || !( +owner.nodeType );
+	return owner.nodeType === 1 || owner.nodeType === 9 || !( Number(owner.nodeType) );
 };
 
 
@@ -4141,7 +4141,7 @@ function dataAttr( elem, key, data ) {
 					data === "null" ? null :
 
 					// Only convert to a number if it doesn't change the string
-					+data + "" === data ? +data :
+					String(Number(data)) === data ? Number(data) :
 					rbrace.test( data ) ? JSON.parse( data ) :
 					data;
 			} catch ( e ) {}
@@ -4460,7 +4460,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
 
 		// Starting value computation is required for potential unit mismatches
-		initialInUnit = ( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
+		initialInUnit = ( jQuery.cssNumber[ prop ] || unit !== "px" && Number(initial) ) &&
 			rcssNum.exec( jQuery.css( elem, prop ) );
 
 	if ( initialInUnit && initialInUnit[ 3 ] !== unit ) {
@@ -4472,7 +4472,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		valueParts = valueParts || [];
 
 		// Iteratively approximate from a nonzero starting point
-		initialInUnit = +initial || 1;
+		initialInUnit = Number(initial) || 1;
 
 		do {
 
@@ -4492,12 +4492,12 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 	}
 
 	if ( valueParts ) {
-		initialInUnit = +initialInUnit || +initial || 0;
+		initialInUnit = Number(initialInUnit) || Number(initial) || 0;
 
 		// Apply relative offset (+=/-=) if specified
 		adjusted = valueParts[ 1 ] ?
 			initialInUnit + ( valueParts[ 1 ] + 1 ) * valueParts[ 2 ] :
-			+valueParts[ 2 ];
+			Number(valueParts[ 2 ]);
 		if ( tween ) {
 			tween.unit = unit;
 			tween.start = initialInUnit;
@@ -4779,7 +4779,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 	// Support: IE <=11 only
 	// Make sure textarea (and checkbox) defaultValue is properly cloned
 	div.innerHTML = "<textarea>x</textarea>";
-	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
+	support.noCloneChecked = Boolean(div.cloneNode( true ).lastChild.defaultValue);
 } )();
 var documentElement = document.documentElement;
 
@@ -6089,7 +6089,7 @@ function curCSS( elem, name, computed ) {
 
 		// Support: IE <=9 - 11 only
 		// IE returns zIndex value as an integer.
-		ret + "" :
+		String(ret) :
 		ret;
 }
 
@@ -7381,7 +7381,7 @@ jQuery.extend( {
 				return ret;
 			}
 
-			elem.setAttribute( name, value + "" );
+			elem.setAttribute( name, String(value) );
 			return value;
 		}
 
@@ -7809,11 +7809,11 @@ jQuery.fn.extend( {
 				val = "";
 
 			} else if ( typeof val === "number" ) {
-				val += "";
+				val = String(val);
 
 			} else if ( jQuery.isArray( val ) ) {
 				val = jQuery.map( val, function( value ) {
-					return value == null ? "" : value + "";
+					return value == null ? "" : String(value);
 				} );
 			}
 
@@ -8829,7 +8829,7 @@ jQuery.extend( {
 		// Add protocol if not provided (prefilters might expect it)
 		// Handle falsy url in the settings object (#10093: consistency with old signature)
 		// We also use the url parameter if available
-		s.url = ( ( url || s.url || location.href ) + "" )
+		s.url = ( String(url || s.url || location.href) )
 			.replace( rprotocol, location.protocol + "//" );
 
 		// Alias method option to type as per ticket #12004
@@ -9091,7 +9091,7 @@ jQuery.extend( {
 
 			// Set data for the fake xhr object
 			jqXHR.status = status;
-			jqXHR.statusText = ( nativeStatusText || statusText ) + "";
+			jqXHR.statusText = String(nativeStatusText || statusText);
 
 			// Success/Error
 			if ( isSuccess ) {
@@ -9242,7 +9242,7 @@ jQuery.expr.pseudos.hidden = function( elem ) {
 	return !jQuery.expr.pseudos.visible( elem );
 };
 jQuery.expr.pseudos.visible = function( elem ) {
-	return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
+	return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 };
 
 
@@ -9265,8 +9265,8 @@ var xhrSuccessStatus = {
 	},
 	xhrSupported = jQuery.ajaxSettings.xhr();
 
-support.cors = !!xhrSupported && ( "withCredentials" in xhrSupported );
-support.ajax = xhrSupported = !!xhrSupported;
+support.cors = Boolean(xhrSupported) && ( "withCredentials" in xhrSupported );
+support.ajax = xhrSupported = Boolean(xhrSupported);
 
 jQuery.ajaxTransport( function( options ) {
 	var callback, errorCallback;
