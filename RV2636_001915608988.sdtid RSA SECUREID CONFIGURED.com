@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<TKNBatch>
+    <TKNHeader>
+        <Version>0</Version>
+        <Origin>N/A</Origin>
+        <Dest>N/A</Dest>
+        <Name>N/A</Name>
+        <FirstToken>N/A</FirstToken>
+        <LastToken>N/A</LastToken>
+        <NumTokens>0</NumTokens>
+        <Secret>7GUEJRyiZzCxUCcaahkkiA==</Secret>
+        <DefBirth>2023/05/01</DefBirth>
+        <DefDeath>2035/12/31</DefDeath>
+        <DefDigits>8</DefDigits>
+        <DefInterval>60</DefInterval>
+        <DefAlg>1</DefAlg>
+        <DefMode>0</DefMode>
+        <DefPrecision>2400</DefPrecision>
+        <DefSmallWin>630</DefSmallWin>
+        <DefMediumWin>4320</DefMediumWin>
+        <DefLargeWin>4320</DefLargeWin>
+        <DefAddPIN>1</DefAddPIN>
+        <DefLocalPIN>0</DefLocalPIN>
+        <DefCopyProtection>1</DefCopyProtection>
+        <DefPinType>0</DefPinType>
+        <DefKeypad>1</DefKeypad>
+        <DefProtLevel>0</DefProtLevel>
+        <DefRevision>0</DefRevision>
+        <DefTimeDerivedSeeds>1</DefTimeDerivedSeeds>
+        <DefAppDerivedSeeds>0</DefAppDerivedSeeds>
+        <DefFormFactor>20000001</DefFormFactor>
+        <HeaderMAC>nMhebWzDtOIKTK5odNcUqg==</HeaderMAC>
+    </TKNHeader>
+    <TKN>
+        <SN>001915608988</SN>
+        <Seed>=R0xGZO7n7e/j572Fu/FEaA==</Seed>
+        <UserFirstName>Rajasekhar</UserFirstName>
+        <UserLastName>VM</UserLastName>
+        <UserLogin>RV2636</UserLogin>
+        <PinType>0</PinType>
+        <TokenAttributes>
+           <DeviceType>PC Software Token V3.0 or later</DeviceType>
+           <DeviceTypeVersion>1.4</DeviceTypeVersion>
+           <TOOLBAR_SITEURL2>https://*.bluestembrands.com/*</TOOLBAR_SITEURL2>
+           <DeviceTypeFamily>Browser Toolbar</DeviceTypeFamily>
+           <TOOLBAR_SITEURL1>https://*.fingerhut.com/*</TOOLBAR_SITEURL1>
+           <Nickname>Bluestem Brands</Nickname>
+        </TokenAttributes>
+        <TokenMAC>r96H8gUzK9J0D4P8N5T3yw==</TokenMAC>
+    </TKN>
+    <TKNTrailer>
+        <BatchSignature>KI09yP3XzinQCyH+uwR+M3GJXuduENFutfu96uG1ig67YHetvt7Qra8NITRHtWhz67fQzWCXe/0bzQRm9MepFI/kbti9vKIkIuLvZ+D5Oaqw5qOltB7wkGoxbC290EOCuA2AgnlDoDEST404PkdgouN79WAI+1Tj3s5NeYKoRrE=</BatchSignature>
+        <BatchCertificate>MIICeTCCAWGgAwIBAgIQM0NFNTU4NTMzMDlGODEzMDANBgkqhkiG9w0BAQQFADBBMT8wPQYDVQQDEzZTZWN1cml0eSBEeW5hbWljcyBUZWNobm9sb2dpZXMsIEluYy4gUHJpbWFyeSBDQSBSb290IDEwHhcNMDIwNTE3MTkyMTU1WhcNMjIwNTEyMTkyMTU1WjA0MTIwMAYDVQQDEylTZWN1cml0eSBEeW5hbWljcyBUZWNobm9sb2dpZXMgQUNFL1NlcnZlcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA1np1DIf3HOHAK2ahcRzZCJsqIC1QMEqtsdanKSEn5CGtLCdLv9LbLUYo6cQxKSJtwvigpeDgBAb/UYcUNXy/7dY7rA5WpYlsaA9h5C9qzPMBHxVGSIe5k61uUbAwdFhCMfLh776wR//VZ7cuypo5d3cCbvgHGwqw4ZuECbKvONMCAwEAATANBgkqhkiG9w0BAQQFAAOCAQEAq8MMJs1SczwpfcZqn9loM+2RhFmN1IZiXyevz1VvGD9GUrlLalm/Et989zR/dVhciGXmAAxYnV/MoZmshjXozmJgjRmfqqHLS46UJ9nLZ2BuEVcrHnn6f9meIjeMWm+Dvh+8Vi9KJOLozYbDoaUMm+5F7ywKsUuBPRSJ1ykGJG6dOCBZlJGmM3kbZ54lRAK2TYcu2JM21i7BKdeE9xItyabJzEk3QCsX0erY7h3V//okIfKWLh8LieoWbV4+VtrQEoiUwyqdYswwgMOyRiKuGTkk3DhHdoqhG8SqHSxkPto42hEnpOx9j2rqcsOWosvNyfm9nwkqJfhuJClLwOzw5Q==</BatchCertificate>
+</TKNTrailer>
+</TKNBatch>
